@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velvet Astro Documentation</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.6; color: #24292e; max-width: 900px; margin: 0 auto; padding: 2rem; }
+        h1, h2, h3 { border-bottom: 1px solid #eaecef; padding-bottom: .3em; }
+        code { background-color: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 85%; }
+        pre { background-color: #f6f8fa; padding: 16px; overflow: auto; border-radius: 3px; }
+        table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+        th, td { border: 1px solid #dfe2e5; padding: 6px 13px; }
+        tr:nth-child(2n) { background-color: #f6f8fa; }
+        blockquote { border-left: 0.25em solid #dfe2e5; color: #6a737d; padding: 0 1em; margin: 0; }
+        @media print {
+            body { max-width: 100%; padding: 0; }
+            a { text-decoration: none; color: black; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Velvet Astro - Unified Cyber Defense Platform</h1>
+    <p><strong>Version:</strong> 1.0.0 | <strong>Date:</strong> December 18, 2025</p>
+
+    <h2>1. Executive Summary</h2>
+    <p>Velvet Astro is a cutting-edge Cyber Defense SaaS platform designed to empower organizations with advanced security capabilities. It bridges the gap between automated threat detection and human operator readiness by combining real-time monitoring, machine learning-driven anomaly detection, and interactive security training.</p>
+
+    <h2>2. System Architecture</h2>
+    <ul>
+        <li><strong>Backend:</strong> FastAPI (Python 3.10+)</li>
+        <li><strong>Frontend:</strong> Next.js 15 (React, TypeScript, Tailwind CSS)</li>
+        <li><strong>Database:</strong> SQLite/PostgreSQL with SQLAlchemy & Alembic</li>
+        <li><strong>Auth:</strong> OAuth2, JWT, Argon2</li>
+        <li><strong>ML:</strong> Scikit-Learn for anomaly detection</li>
+    </ul>
+
+    <h2>3. Features & Modules</h2>
+    <ul>
+        <li><strong>Identity & Access:</strong> Multi-tenancy, RBAC, Risk-based Auth.</li>
+        <li><strong>Detection:</strong> Anomaly detection, Threat Intel, Deception (Honey Tokens).</li>
+        <li><strong>Response:</strong> Incident management, Playbooks.</li>
+        <li><strong>Training:</strong> Phishing simulations, Security awareness modules.</li>
+        <li><strong>Visualization:</strong> Real-time Dashboard, Threat Map, Attack Feed.</li>
+    </ul>
+
+    <h2>4. API Reference</h2>
+    <p>Interactive docs available at <code>/docs</code>.</p>
+    <table>
+        <thead><tr><th>Prefix</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td><code>/auth</code></td><td>Authentication & Profiles</td></tr>
+            <tr><td><code>/orgs</code></td><td>Organization Management</td></tr>
+            <tr><td><code>/monitor</code></td><td>System Health & Traffic</td></tr>
+            <tr><td><code>/training</code></td><td>Training Modules</td></tr>
+            <tr><td><code>/incidents</code></td><td>Security Incidents</td></tr>
+            <tr><td><code>/defense</code></td><td>Active Defense Rules</td></tr>
+        </tbody>
+    </table>
+
+    <h2>5. Installation</h2>
+    <h3>Backend</h3>
+    <pre><code>cd backend
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload</code></pre>
+
+    <h3>Frontend</h3>
+    <pre><code>cd frontend
+npm install
+npm run dev</code></pre>
+
+    <h3>Docker</h3>
+    <pre><code>docker-compose up --build</code></pre>
+
+    <h2>6. Support</h2>
+    <p>For support, please contact the security operations center team.</p>
+
+    <script>
+        // Automatically open print dialog
+        // window.print(); 
+    </script>
+</body>
+</html>
