@@ -24,6 +24,83 @@ export const auth = {
         return data;
     },
 
+    async googleLogin(token: string) {
+        const res = await fetch(`${API_URL}/auth/google/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ token }),
+        });
+
+        if (!res.ok) {
+            const error = await res.json();
+            if (error.detail === "MFA_REQUIRED") {
+                throw new Error("MFA_REQUIRED");
+            }
+            throw new Error(error.detail || "Google login failed");
+        }
+
+        const data = await res.json();
+        localStorage.setItem("token", data.access_token);
+        return data;
+    },
+
+    // Passkey Registration
+    async registerPasskeyOptions(username: string) {
+        // Need token? Yes usually.
+        const token = this.getToken();
+        const headers: any = { "Content-Type": "application/json" };
+        if (token) headers["Authorization"] = `Bearer ${token}`;
+
+        const res = await fetch(`${API_URL}/auth/passkey/register/options`, {
+            method: "POST",
+            headers,
+            body: JSON.stringify({ username, display_name: username })
+        });
+        if (!res.ok) throw new Error("Failed to get reg options");
+        return res.json();
+    },
+
+    async verifyPasskeyRegistration(response: any) {
+        const token = this.getToken();
+        const headers: any = { "Content-Type": "application/json" };
+        if (token) headers["Authorization"] = `Bearer ${token}`;
+
+        const res = await fetch(`${API_URL}/auth/passkey/register/verify`, {
+            method: "POST",
+            headers,
+            body: JSON.stringify(response)
+        });
+        if (!res.ok) throw new Error("Failed to verify registration");
+        return res.json();
+    },
+
+    // Passkey Login
+    async loginPasskeyOptions(username?: string) {
+        const res = await fetch(`${API_URL}/auth/passkey/login/options`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username })
+        });
+        if (!res.ok) throw new Error("Failed to get login options");
+        return res.json();
+    },
+
+    async verifyPasskeyLogin(response: any) {
+        const res = await fetch(`${API_URL}/auth/passkey/login/verify`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(response)
+        });
+
+        if (!res.ok) throw new Error("Failed to verify login");
+
+        const data = await res.json();
+        localStorage.setItem("token", data.access_token);
+        return data;
+    },
+
     logout() {
         localStorage.removeItem("token");
         window.location.href = "/login";

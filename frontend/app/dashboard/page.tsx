@@ -6,6 +6,7 @@ import { SecurityDashboard } from "@/components/dashboard/SecurityDashboard"
 import { CeoDashboard } from "@/components/dashboard/CeoDashboard"
 import { EmployeeDashboard } from "@/components/dashboard/EmployeeDashboard"
 import { Button } from "@/components/ui/button"
+import { PasskeyRegisterButton } from "@/components/auth/PasskeyManager"
 
 export default function DashboardPage() {
     // Mock Role Switching for Demo
@@ -30,6 +31,8 @@ export default function DashboardPage() {
                         </Button>
                     ))}
                 </div>
+
+                <PasskeyRegisterButton />
             </div>
 
             {role === "it" && <SecurityDashboard />}

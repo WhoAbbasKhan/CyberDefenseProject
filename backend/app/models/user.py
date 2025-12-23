@@ -8,7 +8,8 @@ class User(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True, nullable=False)
-    hashed_password = Column(String, nullable=False)
+    hashed_password = Column(String, nullable=True)
+    google_sub = Column(String, unique=True, index=True, nullable=True)
     full_name = Column(String, nullable=True)
     is_active = Column(Boolean, default=True)
     role = Column(String, default="employee") # super_admin, org_admin, security, employee
@@ -20,3 +21,4 @@ class User(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     devices = relationship("UserDevice", back_populates="user")
+    auth_providers = relationship("AuthProvider", back_populates="user")

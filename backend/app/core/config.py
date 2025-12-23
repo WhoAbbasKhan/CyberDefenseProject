@@ -16,6 +16,16 @@ class Settings(BaseSettings):
     
     REDIS_URL: str = "redis://localhost:6379/0" # Will fail if no redis, but we can try
     
+    # Google Auth
+    GOOGLE_CLIENT_ID: Optional[str] = None
+    GOOGLE_CLIENT_SECRET: Optional[str] = None
+    GOOGLE_REDIRECT_URI: str = "http://localhost:3000/auth/google/callback"
+    
+    # WebAuthn
+    RP_ID: str = "localhost"
+    RP_NAME: str = "Velvet Astro"
+    RP_ORIGIN: str = "http://localhost:3000"
+    
     class Config:
         case_sensitive = True
         # In docker, these are env vars. Local fallback can be .env
